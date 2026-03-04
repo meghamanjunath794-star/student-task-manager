@@ -1,10 +1,37 @@
+/* LOGIN */
+
 function login(){
+
+const email=document.getElementById("email").value
+const password=document.getElementById("password").value
+
+if(email && password){
+
+localStorage.setItem("user",email)
+
 window.location.href="index.html"
+
+}else{
+
+alert("Enter email and password")
+
 }
 
-/* TASKS */
+}
+
+function logout(){
+
+localStorage.removeItem("user")
+
+window.location.href="login.html"
+
+}
+
+/* TASK SYSTEM */
 
 let tasks=[]
+
+let currentFilter="all"
 
 function addTask(){
 
@@ -12,7 +39,9 @@ const title=prompt("Enter task")
 
 if(!title) return
 
-tasks.push(title)
+const category=prompt("Category: study / work / personal")
+
+tasks.push({title,category})
 
 renderTasks()
 
@@ -24,14 +53,16 @@ const list=document.getElementById("taskList")
 
 list.innerHTML=""
 
-tasks.forEach((task,index)=>{
+tasks
+.filter(task=>currentFilter==="all" || task.category===currentFilter)
+.forEach((task,index)=>{
 
 const div=document.createElement("div")
 
 div.className="task"
 
 div.innerHTML=`
-${task}
+${task.title} (${task.category})
 <button onclick="deleteTask(${index})">🗑</button>
 `
 
@@ -49,62 +80,10 @@ renderTasks()
 
 }
 
-/* CALENDAR */
+function filterTasks(category){
 
-document.addEventListener('DOMContentLoaded',function(){
+currentFilter=category
 
-const calendarEl=document.getElementById('calendar')
-
-if(calendarEl){
-
-const calendar=new FullCalendar.Calendar(calendarEl,{
-initialView:'dayGridMonth',
-height:500
-})
-
-calendar.render()
-
-}
-
-})
-
-/* AI STUDY PLANNER */
-
-function generatePlan(){
-
-const goal=document.getElementById("studyGoal").value
-
-const plan=`
-Study Plan for: ${goal}
-
-Day 1 → Basics
-Day 2 → Concepts
-Day 3 → Practice
-Day 4 → Mini Project
-Day 5 → Advanced Topics
-Day 6 → Build Project
-Day 7 → Revision
-`
-
-document.getElementById("aiResult").innerText=plan
-
-}
-
-/* PARTICLES */
-
-if(document.getElementById("particles-js")){
-
-particlesJS("particles-js",{
-
-particles:{
-number:{value:60},
-size:{value:3},
-color:{value:"#ffffff"},
-line_linked:{enable:true,color:"#ffffff",opacity:0.3},
-move:{speed:2}
-
-}
-
-})
+renderTasks()
 
 }
