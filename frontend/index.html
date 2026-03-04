@@ -1,55 +1,86 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Task Manager</title>
+
+<title>Dashboard</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-<div class="app">
+<div class="dashboard">
 
-<header>
-<h1>Task Manager</h1>
+<div class="sidebar">
 
-<div class="header-actions">
-<button id="themeToggle">🌙</button>
+<h2 class="logo">StudyApp</h2>
+
+<button class="menu">Dashboard</button>
+<button class="menu">Tasks</button>
+<button class="menu">Calendar</button>
+<button class="menu">Planner</button>
+
 </div>
 
-</header>
+<div class="main">
 
-<div class="task-input">
+<h1 class="headline">Hi Megha 👋</h1>
 
-<input
-type="text"
-id="taskInput"
-placeholder="Write a task and press Enter..."
->
+<div class="cards">
 
-<button onclick="addTask()" class="add-btn">
-Add
+<div class="card pink">
+<h3>Data Mining</h3>
+<p>4 Tasks</p>
+</div>
+
+<div class="card purple">
+<h3>Web Design</h3>
+<p>2 Tasks</p>
+</div>
+
+<div class="card blue">
+<h3>Machine Learning</h3>
+<p>3 Tasks</p>
+</div>
+
+</div>
+
+<h2 class="section">My Tasks</h2>
+
+<div id="taskList"></div>
+
+<button class="add-btn" onclick="addTask()">+</button>
+
+<h2 class="section">Study Calendar</h2>
+
+<div id="calendar"></div>
+
+<h2 class="section">AI Study Planner</h2>
+
+<div class="ai-box">
+
+<input id="studyGoal" placeholder="Example: Learn React in 7 days">
+
+<button onclick="generatePlan()">
+Generate Plan
 </button>
 
-</div>
-
-<div class="task-tools">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search tasks..."
-oninput="searchTasks()"
-/>
-
-<p id="taskCounter"></p>
+<div id="aiResult"></div>
 
 </div>
 
-<div id="taskList" class="task-list"></div>
+</div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
