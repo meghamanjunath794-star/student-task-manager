@@ -115,3 +115,42 @@ document.querySelectorAll(".card").forEach(c=>c.style.display="none")
 document.getElementById(id).style.display="block"
 
 }
+function signup(){
+
+const email=document.getElementById("signupEmail").value
+const password=document.getElementById("signupPassword").value
+const confirm=document.getElementById("confirmPassword").value
+
+if(password!==confirm){
+alert("Passwords do not match")
+return
+}
+
+localStorage.setItem("userEmail",email)
+localStorage.setItem("userPassword",password)
+
+alert("Account created successfully")
+
+window.location.href="login.html"
+
+}
+
+function login(){
+
+const email=document.getElementById("email").value
+const password=document.getElementById("password").value
+
+const savedEmail=localStorage.getItem("userEmail")
+const savedPassword=localStorage.getItem("userPassword")
+
+if(email===savedEmail && password===savedPassword){
+
+window.location.href="index.html"
+
+}else{
+
+alert("Invalid login credentials")
+
+}
+
+}
