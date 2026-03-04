@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
-<title>Dashboard</title>
+<title>Study Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -11,43 +10,133 @@
 
 <body>
 
-<div class="app">
+<div class="container">
 
-<!-- Profile -->
+<!-- SIDEBAR -->
+
+<div class="sidebar">
 
 <div class="profile">
 
-<img src="https://i.pravatar.cc/100" class="avatar">
+<img src="https://i.pravatar.cc/100">
 
-<div>
 <h3>Megha</h3>
+
 <p>Computer Science Student</p>
-</div>
-
-<button onclick="logout()" class="logout">
-Logout
-</button>
 
 </div>
 
-<h1 class="headline">My Tasks</h1>
+<nav>
 
-<!-- Category Buttons -->
+<button onclick="showSection('tasks')">Tasks</button>
 
-<div class="categories">
+<button onclick="showSection('planner')">Planner</button>
 
-<button onclick="filterTasks('all')">All</button>
-<button onclick="filterTasks('study')">Study</button>
-<button onclick="filterTasks('work')">Work</button>
-<button onclick="filterTasks('personal')">Personal</button>
+<button onclick="showSection('calendar')">Calendar</button>
+
+<button onclick="showSection('pomodoro')">Pomodoro</button>
+
+<button onclick="showSection('generator')">Plan Generator</button>
+
+<button onclick="showSection('progress')">Progress</button>
+
+</nav>
+
+<button class="logout" onclick="logout()">Logout</button>
 
 </div>
 
-<div id="taskList"></div>
+<!-- MAIN DASHBOARD -->
 
-<button class="add-btn" onclick="addTask()">+</button>
+<div class="main">
+
+<h1 class="title">Study Dashboard</h1>
+
+<!-- TASKS -->
+
+<div id="tasks" class="card">
+
+<h2>Tasks</h2>
+
+<input id="taskInput" placeholder="New task">
+
+<select id="category">
+
+<option>Study</option>
+<option>Work</option>
+<option>Personal</option>
+
+</select>
+
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
 
 </div>
+
+<!-- STUDY PLANNER -->
+
+<div id="planner" class="card">
+
+<h2>Study Planner</h2>
+
+<textarea placeholder="Write your study plan"></textarea>
+
+</div>
+
+<!-- CALENDAR -->
+
+<div id="calendar" class="card">
+
+<h2>Calendar</h2>
+
+<input type="date">
+
+</div>
+
+<!-- POMODORO -->
+
+<div id="pomodoro" class="card">
+
+<h2>Pomodoro Timer</h2>
+
+<p id="timer">25:00</p>
+
+<button onclick="startTimer()">Start</button>
+
+</div>
+
+<!-- PLAN GENERATOR -->
+
+<div id="generator" class="card">
+
+<h2>AI Study Plan</h2>
+
+<input id="goal" placeholder="Example: Learn React">
+
+<button onclick="generatePlan()">Generate</button>
+
+<p id="planResult"></p>
+
+</div>
+
+<!-- PROGRESS -->
+
+<div id="progress" class="card">
+
+<h2>Progress Tracker</h2>
+
+<progress id="progressBar" value="0" max="100"></progress>
+
+<button onclick="increaseProgress()">Update Progress</button>
+
+</div>
+
+</div>
+
+</div>
+
+<button class="floating-btn">+</button>
 
 <script src="script.js"></script>
 

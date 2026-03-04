@@ -1,19 +1,12 @@
-/* LOGIN */
-
 function login(){
 
 const email=document.getElementById("email").value
-const password=document.getElementById("password").value
 
-if(email && password){
+if(email){
 
 localStorage.setItem("user",email)
 
 window.location.href="index.html"
-
-}else{
-
-alert("Enter email and password")
 
 }
 
@@ -27,21 +20,16 @@ window.location.href="login.html"
 
 }
 
-/* TASK SYSTEM */
+/* TASKS */
 
 let tasks=[]
 
-let currentFilter="all"
-
 function addTask(){
 
-const title=prompt("Enter task")
+const text=document.getElementById("taskInput").value
+const category=document.getElementById("category").value
 
-if(!title) return
-
-const category=prompt("Category: study / work / personal")
-
-tasks.push({title,category})
+tasks.push({text,category})
 
 renderTasks()
 
@@ -53,37 +41,77 @@ const list=document.getElementById("taskList")
 
 list.innerHTML=""
 
-tasks
-.filter(task=>currentFilter==="all" || task.category===currentFilter)
-.forEach((task,index)=>{
+tasks.forEach(t=>{
 
-const div=document.createElement("div")
+const li=document.createElement("li")
 
-div.className="task"
+li.innerHTML=t.text+" ("+t.category+")"
 
-div.innerHTML=`
-${task.title} (${task.category})
-<button onclick="deleteTask(${index})">🗑</button>
-`
-
-list.appendChild(div)
+list.appendChild(li)
 
 })
 
 }
 
-function deleteTask(index){
+/* PLAN GENERATOR */
 
-tasks.splice(index,1)
+function generatePlan(){
 
-renderTasks()
+const goal=document.getElementById("goal").value
+
+document.getElementById("planResult").innerText=
+
+"Plan for: "+goal+
+"\nDay 1: Basics"+
+"\nDay 2: Practice"+
+"\nDay 3: Build Project"
 
 }
 
-function filterTasks(category){
+/* PROGRESS */
 
-currentFilter=category
+let progress=0
 
-renderTasks()
+function increaseProgress(){
+
+progress+=10
+
+document.getElementById("progressBar").value=progress
+
+}
+
+/* POMODORO */
+
+let time=1500
+
+function startTimer(){
+
+setInterval(()=>{
+
+if(time>0){
+
+time--
+
+}
+
+let minutes=Math.floor(time/60)
+
+let seconds=time%60
+
+document.getElementById("timer").innerText=
+
+minutes+":"+(seconds<10?"0":"")+seconds
+
+},1000)
+
+}
+
+/* SIDEBAR NAVIGATION */
+
+function showSection(id){
+
+document.querySelectorAll(".card").forEach(c=>c.style.display="none")
+
+document.getElementById(id).style.display="block"
 
 }
