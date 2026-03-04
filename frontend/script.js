@@ -1,68 +1,162 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []
 
-function login() {
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("appPage").style.display = "block";
-    displayTasks();
+const input = document.getElementById("taskInput")
+
+input.addEventListener("keypress", function(e){
+
+if(e.key==="Enter"){
+
+addTask()
+
 }
 
-function logout() {
-    document.getElementById("appPage").style.display = "none";
-    document.getElementById("loginPage").style.display = "block";
+})
+
+function addTask(){
+
+const text = input.value.trim()
+
+if(!text) return
+
+tasks.push({
+text:text,
+completed:false
+})
+
+input.value=""
+
+saveTasks()
+renderTasks()
+
 }
 
-function addTask() {
-    const text = document.getElementById("taskInput").value;
-    if (!text) return;
+function renderTasks(){
 
-    tasks.push({
-        text: text,
-        category: "Study",
-        completed: false
-    });
+const list = document.getElementById("taskList")
 
-    saveTasks();
-    document.getElementById("taskInput").value = "";
-    displayTasks();
+list.innerHTML=""
+
+tasks.forEach((task,index)=>{
+
+const div = document.createElement("div")
+
+div.className="task"
+
+div.innerHTML=`
+
+<span class="${task.completed ? "completed" : ""}">
+${task.text}
+</span>
+
+<div class="actions">
+
+<button onclick="toggleTask(${index})">
+✔
+</button>
+
+<button onclick="deleteTask(${index})">
+✕
+</button>
+
+</div>
+
+`
+
+list.appendChild(div)
+
+})
+
+updateCounter()
+
 }
 
-function toggleComplete(index) {
-    tasks[index].completed = !tasks[index].completed;
-    saveTasks();
-    displayTasks();
+function toggleTask(index){
+
+tasks[index].completed=!tasks[index].completed
+
+saveTasks()
+renderTasks()
+
 }
 
-function deleteTask(index) {
-    tasks.splice(index, 1);
-    saveTasks();
-    displayTasks();
+function deleteTask(index){
+
+tasks.splice(index,1)
+
+saveTasks()
+renderTasks()
+
 }
 
-function filterTasks(category) {
-    displayTasks(category);
+function saveTasks(){
+
+localStorage.setItem("tasks",JSON.stringify(tasks))
+
 }
 
-function displayTasks(filter = "All") {
-    const list = document.getElementById("taskList");
-    list.innerHTML = "";
+function searchTasks(){
 
-    tasks.forEach((task, index) => {
-        if (filter === "All" || task.category === filter) {
-            const div = document.createElement("div");
-            div.className = "task-item";
-            if (task.completed) div.classList.add("completed");
+const value = document.getElementById("searchInput").value.toLowerCase()
 
-            div.innerHTML = `
-                <span onclick="toggleComplete(${index})">
-                    ${task.text}
-                </span>
-                <button onclick="deleteTask(${index})">🗑</button>
-            `;
-            list.appendChild(div);
-        }
-    });
+const filtered = tasks.filter(task =>
+task.text.toLowerCase().includes(value)
+)
+
+displayFiltered(filtered)
+
 }
 
-function saveTasks() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+function displayFiltered(data){
+
+const list = document.getElementById("taskList")
+
+list.innerHTML=""
+
+data.forEach((task,index)=>{
+
+const div=document.createElement("div")
+
+div.className="task"
+
+div.innerHTML=`
+
+<span class="${task.completed ? "completed" : ""}">
+${task.text}
+</span>
+
+<div class="actions">
+
+<button onclick="toggleTask(${index})">✔</button>
+
+<button onclick="deleteTask(${index})">✕</button>
+
+</div>
+
+`
+
+list.appendChild(div)
+
+})
+
 }
+
+function updateCounter(){
+
+document.getElementById("taskCounter").innerText =
+tasks.length + " tasks"
+
+}
+
+/* THEME TOGGLE */
+
+const themeBtn = document.getElementById("themeToggle")
+
+themeBtn.onclick=()=>{
+
+document.body.classList.toggle("light")
+
+}
+
+/* LOAD TASKS */
+
+renderTasks()

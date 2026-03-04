@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Task Manager</title>
-    <link rel="stylesheet" href="style.css">
+<title>Task Manager</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- LOGIN PAGE -->
-<div id="loginPage" class="login-container">
-    <h2>Welcome Back 👋</h2>
-    <input type="email" id="emailInput" placeholder="Email">
-    <input type="password" id="passwordInput" placeholder="Password">
-    <button onclick="login()" class="primary-btn">Login</button>
+<div class="app">
+
+<header>
+<h1>Task Manager</h1>
+
+<div class="header-actions">
+<button id="themeToggle">🌙</button>
 </div>
 
-<!-- APP PAGE -->
-<div id="appPage" class="mobile-container" style="display:none;">
+</header>
 
-    <h2>Hi, Megha 👋</h2>
+<div class="task-input">
 
-    <input type="text" id="taskInput" placeholder="Add new task...">
+<input
+type="text"
+id="taskInput"
+placeholder="Write a task and press Enter..."
+>
 
-    <!-- Category Tabs -->
-    <div class="categories">
-        <button onclick="filterTasks('All')" class="cat all">All</button>
-        <button onclick="filterTasks('Study')" class="cat study">Study</button>
-        <button onclick="filterTasks('Work')" class="cat work">Work</button>
-        <button onclick="filterTasks('Personal')" class="cat personal">Personal</button>
-    </div>
+<button onclick="addTask()" class="add-btn">
+Add
+</button>
 
-    <div id="taskList"></div>
+</div>
 
-    <button class="floating-btn" onclick="addTask()">+</button>
-    <button class="logout-btn" onclick="logout()">Logout</button>
+<div class="task-tools">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search tasks..."
+oninput="searchTasks()"
+/>
+
+<p id="taskCounter"></p>
+
+</div>
+
+<div id="taskList" class="task-list"></div>
 
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
