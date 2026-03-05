@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <title>Study Dashboard</title>
@@ -12,55 +13,47 @@
 
 <body>
 
-<div class="container">
+<div class="layout">
 
 <div class="sidebar">
 
-<div class="profile">
-
-<img src="https://i.pravatar.cc/100">
+<div class="profile-avatar">M</div>
 
 <h3>Megha</h3>
-
 <p>CS Student</p>
 
-</div>
-
-<nav>
-
-<button onclick="showSection('tasks')">Tasks</button>
-
-<button onclick="showSection('planner')">Planner</button>
-
-<button onclick="showSection('generator')">AI Plan</button>
-
-<button onclick="showSection('weekly')">Weekly Plan</button>
-
-<button onclick="showSection('analytics')">Analytics</button>
-
-<button onclick="showSection('deadline')">Deadline</button>
-
-</nav>
+<button onclick="show('tasks')">Tasks</button>
+<button onclick="show('planner')">Planner</button>
+<button onclick="show('generator')">AI Plan</button>
+<button onclick="show('weekly')">Weekly</button>
+<button onclick="show('deadline')">Deadline</button>
+<button onclick="show('analytics')">Analytics</button>
+<button onclick="show('pomodoro')">Pomodoro</button>
+<button onclick="show('chat')">AI Chat</button>
+<button onclick="toggleTheme()">Theme</button>
 
 </div>
 
 <div class="main">
 
-<h1 class="title">Study Dashboard</h1>
+<h1>Study Dashboard</h1>
 
-<div id="tasks" class="card">
+<!-- TASK BOARD -->
 
-<h2>Task Manager</h2>
+<div id="tasks" class="section">
+
+<h2>Task Board</h2>
 
 <input id="taskInput">
-
-<button onclick="addTask()">Add</button>
+<button onclick="addTask()">Add Task</button>
 
 <ul id="taskList"></ul>
 
 </div>
 
-<div id="generator" class="card">
+<!-- AI PLAN -->
+
+<div id="generator" class="section">
 
 <h2>AI Study Plan</h2>
 
@@ -68,47 +61,73 @@
 
 <input id="days" type="number" placeholder="Days">
 
-<button onclick="generatePlan()">Generate</button>
+<button onclick="generatePlan()">Generate Plan</button>
 
 <div id="planResult"></div>
 
 </div>
 
-<div id="weekly" class="card">
+<!-- WEEKLY -->
 
-<h2>Weekly Scheduler</h2>
+<div id="weekly" class="section">
 
-<input id="weekSubject">
+<h2>Weekly Planner</h2>
 
-<button onclick="generateWeeklyPlan()">
+<button onclick="generateWeek()">Generate</button>
 
-Generate
-
-</button>
-
-<div id="weeklyResult"></div>
+<div id="weekResult"></div>
 
 </div>
 
-<div id="deadline" class="card">
+<!-- DEADLINE -->
+
+<div id="deadline" class="section">
 
 <h2>Deadline Reminder</h2>
 
-<input id="deadlineTask" placeholder="Task">
+<input id="deadlineTask">
 
-<input id="deadlineDate" type="date">
+<input type="date" id="deadlineDate">
 
-<button onclick="setDeadline()">Set Reminder</button>
+<button onclick="setDeadline()">Set</button>
 
 <p id="deadlineMsg"></p>
 
 </div>
 
-<div id="analytics" class="card">
+<!-- ANALYTICS -->
+
+<div id="analytics" class="section">
 
 <h2>Study Analytics</h2>
 
 <canvas id="studyChart"></canvas>
+
+</div>
+
+<!-- POMODORO -->
+
+<div id="pomodoro" class="section">
+
+<h2>Pomodoro Timer</h2>
+
+<p id="timer">25:00</p>
+
+<button onclick="startPomodoro()">Start</button>
+
+</div>
+
+<!-- AI CHAT -->
+
+<div id="chat" class="section">
+
+<h2>AI Study Assistant</h2>
+
+<input id="chatInput">
+
+<button onclick="askAI()">Ask</button>
+
+<div id="chatResult"></div>
 
 </div>
 
