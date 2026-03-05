@@ -2,13 +2,13 @@
 
 function show(id){
 
-const sections=document.querySelectorAll(".section")
-
-sections.forEach(s=>s.style.display="none")
+document.querySelectorAll(".section")
+.forEach(s=>s.style.display="none")
 
 document.getElementById(id).style.display="block"
 
 }
+
 
 /* signup */
 
@@ -23,6 +23,7 @@ localStorage.setItem("pass",pass)
 location.href="login.html"
 
 }
+
 
 /* login */
 
@@ -44,87 +45,135 @@ alert("Invalid login")
 
 }
 
-/* tasks */
 
-let tasks=[]
+/* task board */
 
 function addTask(){
 
 let text=document.getElementById("taskInput").value
 
-tasks.push(text)
-
-renderTasks()
-
-}
-
-function renderTasks(){
-
-let list=document.getElementById("taskList")
-
-list.innerHTML=""
-
-tasks.forEach(t=>{
-
 let li=document.createElement("li")
-li.innerText=t
-list.appendChild(li)
+li.innerText=text
+li.draggable=true
 
-})
+document.getElementById("taskList").appendChild(li)
 
 }
 
-/* study plan */
+
+/* AI plan */
 
 function generatePlan(){
 
-let subject=document.getElementById("subject").value
-let days=document.getElementById("days").value
+const subject=document.getElementById("subject").value
+const days=parseInt(document.getElementById("days").value)
 
-let topics=[
+const topics=[
+
 "Introduction",
 "Basics",
 "Theory",
 "Practice",
 "Mini Project",
-"Advanced",
+"Advanced Concepts",
 "Final Project"
+
 ]
 
-let result=""
+let html=""
 
 for(let i=0;i<days;i++){
 
-result+=`<p>Day ${i+1}: ${topics[i%topics.length]}</p>`
+html+=`<p><b>Day ${i+1}</b>: ${topics[i%topics.length]} of ${subject}</p>`
 
 }
 
-result+=`<p>
+html+=`<br>
 <a target="_blank"
-href="https://youtube.com/results?search_query=${subject}+course">
+href="https://youtube.com/results?search_query=${subject}+full+course">
 Recommended YouTube Course
 </a>
-</p>`
+`
 
-document.getElementById("planResult").innerHTML=result
+document.getElementById("planResult").innerHTML=html
 
 }
 
-/* weekly */
+
+/* weekly planner */
 
 function generateWeek(){
 
-let text=""
+let subject=document.getElementById("weeklySubject").value
 
-for(let i=1;i<=7;i++){
+let plan=[
 
-text+=`<p>Day ${i}: Study + Practice + Revision</p>`
+"Study basics and practice exercises",
+"Revise basics and study introduction",
+"Learn core theory and practice",
+"Revision and problem solving",
+"Intermediate concepts and practice",
+"Mini project",
+"Final revision"
+
+]
+
+let html=""
+
+plan.forEach((p,i)=>{
+
+html+=`<p><b>Day ${i+1}</b>: ${p} (${subject})</p>`
+
+})
+
+document.getElementById("weekResult").innerHTML=html
 
 }
 
-document.getElementById("weekResult").innerHTML=text
+
+/* calendar */
+
+const calendar=document.getElementById("calendarGrid")
+
+if(calendar){
+
+for(let i=1;i<=30;i++){
+
+let d=document.createElement("div")
+d.className="day"
+d.innerText=i
+
+calendar.appendChild(d)
 
 }
+
+}
+
+
+/* pomodoro */
+
+let time=1500
+
+function startPomodoro(){
+
+let timer=setInterval(()=>{
+
+time--
+
+let m=Math.floor(time/60)
+let s=time%60
+
+document.getElementById("timer").innerText=m+":"+s
+
+if(time<=0){
+clearInterval(timer)
+alert("Break time")
+}
+
+},1000)
+
+}
+
 
 /* deadline */
 
@@ -138,25 +187,6 @@ document.getElementById("deadlineMsg").innerText=
 
 }
 
-/* pomodoro */
-
-let time=1500
-let timer
-
-function startPomodoro(){
-
-timer=setInterval(()=>{
-
-time--
-
-let m=Math.floor(time/60)
-let s=time%60
-
-document.getElementById("timer").innerText=`${m}:${s}`
-
-},1000)
-
-}
 
 /* AI chat */
 
@@ -164,15 +194,53 @@ function askAI(){
 
 let q=document.getElementById("chatInput").value
 
-document.getElementById("chatResult").innerHTML=
-`AI Suggestion: Search for ${q} tutorials and practice daily.`
+document.getElementById("chatResult").innerText=
+
+"Suggested learning path: Search tutorials for "+q+" and practice daily."
 
 }
+
+
+/* streak */
+
+function updateStreak(){
+
+let streak=localStorage.getItem("streak")||0
+
+streak++
+
+localStorage.setItem("streak",streak)
+
+document.getElementById("streakCount").innerText=streak
+
+}
+
 
 /* theme */
 
 function toggleTheme(){
 
 document.body.classList.toggle("light")
+
+}
+
+
+/* analytics */
+
+const ctx=document.getElementById("studyChart")
+
+if(ctx){
+
+new Chart(ctx,{
+type:"bar",
+data:{
+labels:["Mon","Tue","Wed","Thu","Fri"],
+datasets:[{
+label:"Study Hours",
+data:[2,4,3,5,4],
+backgroundColor:"#c7a98b"
+}]
+}
+})
 
 }
