@@ -7,96 +7,95 @@ background:#111;
 color:#f5f1ea;
 }
 
-/* landing */
+/* Landing */
 
 .landing{
-
 height:100vh;
-
 background:url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
-
 background-size:cover;
 background-position:center;
-
 display:flex;
 justify-content:center;
 align-items:center;
-
 }
 
 .landing-overlay{
-
 background:rgba(0,0,0,0.7);
 padding:60px;
 text-align:center;
-
 }
 
 .landing-title{
 font-size:56px;
 font-weight:700;
-font-family:Playfair Display;
+font-family:"Playfair Display";
 }
 
 .landing-sub{
-font-size:20px;
+font-size:22px;
 }
 
+/* Login */
 
-/* titles */
+.auth{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("https://images.unsplash.com/photo-1519389950473-47ba0277781c");
+background-size:cover;
+background-position:center;
+}
+
+.auth-card{
+background:rgba(0,0,0,0.8);
+padding:40px;
+border-radius:12px;
+width:350px;
+}
+
+/* Titles */
 
 .page-title{
 font-size:44px;
 font-weight:700;
-font-family:Playfair Display;
+font-family:"Playfair Display";
 }
 
-
-/* layout */
+/* Layout */
 
 .layout{
 display:flex;
 }
 
 .sidebar{
-
 width:220px;
 background:#1c1c1c;
 height:100vh;
 padding:20px;
-
 display:flex;
 flex-direction:column;
 gap:10px;
-
 }
 
 .sidebar button{
-
 background:#c7a98b;
 border:none;
 padding:10px;
 border-radius:8px;
 cursor:pointer;
-
 }
 
 .avatar{
-
 width:70px;
 height:70px;
-
 background:#c7a98b;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 border-radius:50%;
-
 font-size:30px;
 font-weight:bold;
-
 }
 
 .main{
@@ -104,22 +103,48 @@ flex:1;
 padding:40px;
 }
 
-
-/* sections */
+/* Sections */
 
 .section{
 margin-top:30px;
 }
 
-input{
-padding:10px;
-border-radius:6px;
-border:none;
-margin-top:10px;
+.section-title{
+font-size:30px;
+margin-bottom:20px;
 }
 
+input{
+width:100%;
+padding:14px;
+background:#1f1f1f;
+border:none;
+border-radius:10px;
+color:white;
+margin-bottom:12px;
+}
 
-/* calendar */
+.primary-btn{
+padding:12px;
+background:#c7a98b;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.task-list{
+list-style:none;
+padding:0;
+}
+
+.task-list li{
+padding:12px;
+background:#1f1f1f;
+margin-bottom:10px;
+border-radius:10px;
+}
+
+/* Calendar */
 
 #calendarGrid{
 display:grid;
@@ -133,29 +158,4 @@ background:#1f1f1f;
 padding:20px;
 text-align:center;
 border-radius:6px;
-}
-
-
-/* auth */
-
-.auth{
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:#111;
-}
-
-.auth-card{
-background:#1f1f1f;
-padding:40px;
-width:350px;
-}
-
-
-/* light theme */
-
-.light{
-background:white;
-color:black;
 }

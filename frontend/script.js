@@ -1,5 +1,3 @@
-/* navigation */
-
 function show(id){
 
 document.querySelectorAll(".section")
@@ -8,7 +6,6 @@ document.querySelectorAll(".section")
 document.getElementById(id).style.display="block"
 
 }
-
 
 /* signup */
 
@@ -23,7 +20,6 @@ localStorage.setItem("pass",pass)
 location.href="login.html"
 
 }
-
 
 /* login */
 
@@ -45,8 +41,7 @@ alert("Invalid login")
 
 }
 
-
-/* task board */
+/* tasks */
 
 function addTask(){
 
@@ -54,14 +49,12 @@ let text=document.getElementById("taskInput").value
 
 let li=document.createElement("li")
 li.innerText=text
-li.draggable=true
 
 document.getElementById("taskList").appendChild(li)
 
 }
 
-
-/* AI plan */
+/* study plan */
 
 function generatePlan(){
 
@@ -99,8 +92,7 @@ document.getElementById("planResult").innerHTML=html
 
 }
 
-
-/* weekly planner */
+/* weekly */
 
 function generateWeek(){
 
@@ -108,11 +100,11 @@ let subject=document.getElementById("weeklySubject").value
 
 let plan=[
 
-"Study basics and practice exercises",
-"Revise basics and study introduction",
-"Learn core theory and practice",
+"Study basics and practice",
+"Revise basics and introduction",
+"Core theory and exercises",
 "Revision and problem solving",
-"Intermediate concepts and practice",
+"Intermediate concepts",
 "Mini project",
 "Final revision"
 
@@ -129,7 +121,6 @@ html+=`<p><b>Day ${i+1}</b>: ${p} (${subject})</p>`
 document.getElementById("weekResult").innerHTML=html
 
 }
-
 
 /* calendar */
 
@@ -149,32 +140,6 @@ calendar.appendChild(d)
 
 }
 
-
-/* pomodoro */
-
-let time=1500
-
-function startPomodoro(){
-
-let timer=setInterval(()=>{
-
-time--
-
-let m=Math.floor(time/60)
-let s=time%60
-
-document.getElementById("timer").innerText=m+":"+s
-
-if(time<=0){
-clearInterval(timer)
-alert("Break time")
-}
-
-},1000)
-
-}
-
-
 /* deadline */
 
 function setDeadline(){
@@ -186,20 +151,6 @@ document.getElementById("deadlineMsg").innerText=
 `Reminder set for ${task} on ${date}`
 
 }
-
-
-/* AI chat */
-
-function askAI(){
-
-let q=document.getElementById("chatInput").value
-
-document.getElementById("chatResult").innerText=
-
-"Suggested learning path: Search tutorials for "+q+" and practice daily."
-
-}
-
 
 /* streak */
 
@@ -215,32 +166,37 @@ document.getElementById("streakCount").innerText=streak
 
 }
 
+/* AI assistant */
 
-/* theme */
+async function askAI(){
 
-function toggleTheme(){
+const question=document.getElementById("chatInput").value
 
-document.body.classList.toggle("light")
+const response=await fetch("https://api.openai.com/v1/chat/completions",{
 
-}
+method:"POST",
 
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer YOUR_OPENAI_API_KEY"
+},
 
-/* analytics */
+body:JSON.stringify({
 
-const ctx=document.getElementById("studyChart")
+model:"gpt-4o-mini",
 
-if(ctx){
+messages:[
+{role:"system",content:"You are a helpful study assistant."},
+{role:"user",content:question}
+]
 
-new Chart(ctx,{
-type:"bar",
-data:{
-labels:["Mon","Tue","Wed","Thu","Fri"],
-datasets:[{
-label:"Study Hours",
-data:[2,4,3,5,4],
-backgroundColor:"#c7a98b"
-}]
-}
 })
+
+})
+
+const data=await response.json()
+
+document.getElementById("chatResult").innerText=
+data.choices[0].message.content
 
 }

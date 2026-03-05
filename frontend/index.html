@@ -14,7 +14,7 @@
 
 <div class="layout">
 
-<!-- SIDEBAR -->
+<!-- Sidebar -->
 
 <div class="sidebar">
 
@@ -29,16 +29,13 @@
 <button onclick="show('calendar')">Calendar</button>
 <button onclick="show('analytics')">Analytics</button>
 <button onclick="show('deadline')">Deadline</button>
-<button onclick="show('pomodoro')">Pomodoro</button>
 <button onclick="show('chat')">AI Chat</button>
 <button onclick="show('streak')">Study Streak</button>
-
-<button onclick="toggleTheme()">Theme</button>
 
 </div>
 
 
-<!-- MAIN AREA -->
+<!-- Main -->
 
 <div class="main">
 
@@ -49,12 +46,13 @@
 
 <div id="tasks" class="section">
 
-<h2>Task Board</h2>
+<h2 class="section-title">Task Board</h2>
 
-<input id="taskInput">
-<button onclick="addTask()">Add Task</button>
+<input id="taskInput" placeholder="Enter your task">
 
-<ul id="taskList"></ul>
+<button class="primary-btn" onclick="addTask()">Add Task</button>
+
+<ul id="taskList" class="task-list"></ul>
 
 </div>
 
@@ -63,13 +61,13 @@
 
 <div id="generator" class="section">
 
-<h2>AI Study Plan Generator</h2>
+<h2 class="section-title">AI Study Plan Generator</h2>
 
 <input id="subject" placeholder="Subject">
 
 <input id="days" type="number" placeholder="Days">
 
-<button onclick="generatePlan()">Generate</button>
+<button class="primary-btn" onclick="generatePlan()">Generate Plan</button>
 
 <div id="planResult"></div>
 
@@ -80,11 +78,11 @@
 
 <div id="weekly" class="section">
 
-<h2>Weekly Planner</h2>
+<h2 class="section-title">Weekly Planner</h2>
 
 <input id="weeklySubject" placeholder="Subject">
 
-<button onclick="generateWeek()">Generate Weekly Plan</button>
+<button class="primary-btn" onclick="generateWeek()">Generate Weekly Plan</button>
 
 <div id="weekResult"></div>
 
@@ -95,7 +93,7 @@
 
 <div id="calendar" class="section">
 
-<h2>Study Calendar</h2>
+<h2 class="section-title">Study Calendar</h2>
 
 <div id="calendarGrid"></div>
 
@@ -106,7 +104,7 @@
 
 <div id="analytics" class="section">
 
-<h2>Study Analytics</h2>
+<h2 class="section-title">Study Analytics</h2>
 
 <canvas id="studyChart"></canvas>
 
@@ -117,28 +115,15 @@
 
 <div id="deadline" class="section">
 
-<h2>Deadline Reminder</h2>
+<h2 class="section-title">Deadline Reminder</h2>
 
 <input id="deadlineTask">
 
 <input id="deadlineDate" type="date">
 
-<button onclick="setDeadline()">Set Reminder</button>
+<button class="primary-btn" onclick="setDeadline()">Set Reminder</button>
 
 <p id="deadlineMsg"></p>
-
-</div>
-
-
-<!-- POMODORO -->
-
-<div id="pomodoro" class="section">
-
-<h2>Pomodoro Focus Timer</h2>
-
-<p id="timer">25:00</p>
-
-<button onclick="startPomodoro()">Start</button>
 
 </div>
 
@@ -147,11 +132,11 @@
 
 <div id="chat" class="section">
 
-<h2>AI Study Assistant</h2>
+<h2 class="section-title">AI Study Assistant</h2>
 
-<input id="chatInput">
+<input id="chatInput" placeholder="Ask a study question">
 
-<button onclick="askAI()">Ask</button>
+<button class="primary-btn" onclick="askAI()">Ask</button>
 
 <div id="chatResult"></div>
 
@@ -162,11 +147,11 @@
 
 <div id="streak" class="section">
 
-<h2>Study Streak</h2>
+<h2 class="section-title">Study Streak</h2>
 
 <p id="streakCount">0</p>
 
-<button onclick="updateStreak()">Mark Study Done</button>
+<button class="primary-btn" onclick="updateStreak()">Mark Study Done</button>
 
 </div>
 
