@@ -1,139 +1,168 @@
 body{
 margin:0;
 font-family:Segoe UI;
-background:#111;
 color:#f2e8dc;
+background:#111;
 }
 
-.login-body{
-display:flex;
-justify-content:center;
-align-items:center;
+/* landing wallpaper */
+
+.landing-body{
+
 height:100vh;
-background:#111;
+
+background:url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
+
+background-size:cover;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.app-title{
+
+font-size:56px;
+
+font-weight:900;
+
+}
+
+.landing-box{
+
+background:rgba(0,0,0,0.6);
+
+padding:60px;
+
+border-radius:12px;
+
+text-align:center;
+
+}
+
+/* login */
+
+.login-body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:url("https://images.unsplash.com/photo-1499750310107-5fef28a66643");
+
+background-size:cover;
+
 }
 
 .login-card{
-background:#1b1b1b;
-padding:50px;
-border-radius:14px;
+
+background:rgba(0,0,0,0.7);
+
+padding:40px;
+
+border-radius:12px;
+
 width:350px;
-text-align:center;
+
 }
 
 .login-title{
-font-size:46px;
-font-weight:900;
+
+font-size:40px;
+
+font-weight:800;
+
 }
 
-.login-card input{
+input{
+
 width:100%;
+
 padding:12px;
-margin:10px 0;
+
+margin-top:10px;
+
 border:none;
-border-radius:8px;
+
+border-radius:6px;
+
 }
 
-.login-card button{
-width:100%;
-padding:12px;
+button{
+
 background:#c7a98b;
+
 border:none;
-border-radius:8px;
+
+padding:10px;
+
+margin-top:10px;
+
 cursor:pointer;
+
+border-radius:6px;
+
 }
+
+/* layout */
 
 .container{
+
 display:flex;
-height:100vh;
+
 }
 
 .sidebar{
-width:220px;
-background:#181818;
-padding:20px;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-}
 
-.profile{
-text-align:center;
+width:220px;
+
+background:#1a1a1a;
+
+height:100vh;
+
+padding:20px;
+
 }
 
 .profile img{
+
 width:70px;
+
 border-radius:50%;
-}
 
-nav button{
-display:block;
-width:100%;
-margin:10px 0;
-padding:10px;
-background:#2b2b2b;
-color:#f2e8dc;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-nav button:hover{
-background:#c7a98b;
-color:black;
 }
 
 .main{
+
 flex:1;
+
 padding:40px;
-overflow:auto;
+
 }
 
 .title{
+
 font-size:46px;
+
 font-weight:900;
+
 }
 
 .card{
-background:#1e1e1e;
+
+background:#1f1f1f;
+
 padding:25px;
-border-radius:12px;
+
+border-radius:10px;
+
 margin-top:20px;
-}
 
-.card input,
-.card textarea,
-.card select{
-width:100%;
-padding:10px;
-margin-top:10px;
-border:none;
-border-radius:6px;
-}
-
-.card button{
-margin-top:10px;
-padding:10px;
-background:#c7a98b;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-#timer{
-font-size:40px;
-font-weight:bold;
-}
-
-.floating-btn{
-position:fixed;
-bottom:30px;
-right:30px;
-width:60px;
-height:60px;
-border-radius:50%;
-border:none;
-background:#c7a98b;
-font-size:30px;
-cursor:pointer;
 }

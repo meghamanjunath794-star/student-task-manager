@@ -1,18 +1,19 @@
 function signup(){
 
 const email=document.getElementById("signupEmail").value
-const password=document.getElementById("signupPassword").value
+const pass=document.getElementById("signupPassword").value
 const confirm=document.getElementById("confirmPassword").value
 
-if(password!==confirm){
+if(pass!==confirm){
+
 alert("Passwords do not match")
+
 return
+
 }
 
-localStorage.setItem("userEmail",email)
-localStorage.setItem("userPassword",password)
-
-alert("Account created")
+localStorage.setItem("email",email)
+localStorage.setItem("pass",pass)
 
 window.location.href="login.html"
 
@@ -21,35 +22,30 @@ window.location.href="login.html"
 function login(){
 
 const email=document.getElementById("email").value
-const password=document.getElementById("password").value
+const pass=document.getElementById("password").value
 
-const savedEmail=localStorage.getItem("userEmail")
-const savedPassword=localStorage.getItem("userPassword")
-
-if(email===savedEmail && password===savedPassword){
+if(email===localStorage.getItem("email") &&
+pass===localStorage.getItem("pass")){
 
 window.location.href="index.html"
 
 }else{
 
-alert("Invalid credentials")
+alert("Invalid login")
 
 }
 
 }
 
-function logout(){
-window.location.href="login.html"
-}
+/* task manager */
 
 let tasks=[]
 
 function addTask(){
 
 const text=document.getElementById("taskInput").value
-const category=document.getElementById("category").value
 
-tasks.push({text,category})
+tasks.push(text)
 
 renderTasks()
 
@@ -65,7 +61,7 @@ tasks.forEach(t=>{
 
 const li=document.createElement("li")
 
-li.innerHTML=t.text+" ("+t.category+")"
+li.innerText=t
 
 list.appendChild(li)
 
@@ -73,41 +69,138 @@ list.appendChild(li)
 
 }
 
+/* study plan generator */
+
 function generatePlan(){
 
-const subject=document.getElementById("subject").value
+const subject=document.getElementById("subject").value.toLowerCase()
 const days=parseInt(document.getElementById("days").value)
 
-let result="<h3>Study Plan for "+subject+"</h3>"
+if(!subject || !days){
+alert("Enter subject and days")
+return
+}
 
-for(let i=1;i<=days;i++){
+const plans={
 
-result+=`<p>Day ${i}: Study ${subject}</p>`
+python:[
+"Introduction to Python",
+"Installing Python & IDE Setup",
+"Variables and Data Types",
+"Operators and Expressions",
+"If Statements and Conditions",
+"Loops (for / while)",
+"Functions",
+"Lists and Tuples",
+"Dictionaries and Sets",
+"File Handling",
+"Object Oriented Programming",
+"Modules and Packages",
+"Error Handling",
+"Working with APIs",
+"Mini Project: CLI To-Do App",
+"Final Project: Python Automation Script"
+],
+
+javascript:[
+"Introduction to JavaScript",
+"Variables (let, const)",
+"Data Types",
+"Operators",
+"Functions",
+"Arrays and Objects",
+"DOM Manipulation",
+"Events",
+"Async JavaScript",
+"Fetch API",
+"ES6 Concepts",
+"Mini Project: To-Do App",
+"Final Project: Interactive Web App"
+],
+
+react:[
+"Introduction to React",
+"JSX",
+"Components",
+"Props",
+"State",
+"Event Handling",
+"React Hooks",
+"Routing with React Router",
+"API Fetching",
+"State Management",
+"Mini Project: Notes App",
+"Final Project: Full React Dashboard"
+],
+
+java:[
+"Introduction to Java",
+"Java Setup (JDK & IDE)",
+"Variables and Data Types",
+"Operators",
+"Conditional Statements",
+"Loops",
+"Methods",
+"Arrays",
+"Object Oriented Programming",
+"Collections Framework",
+"Exception Handling",
+"Mini Project: Student Manager",
+"Final Project: Java Console Application"
+]
 
 }
+
+const youtubeLinks={
+
+python:"https://www.youtube.com/watch?v=rfscVS0vtbw",
+javascript:"https://www.youtube.com/watch?v=W6NZfCO5SIk",
+react:"https://www.youtube.com/watch?v=bMknfKXIFA8",
+java:"https://www.youtube.com/watch?v=eIrMbAQSU34"
+
+}
+
+let topicList=plans[subject]
+
+if(!topicList){
+
+topicList=[
+"Introduction",
+"Core Concepts",
+"Theory",
+"Practice",
+"Mini Project",
+"Revision"
+]
+
+}
+
+let result=`<h3>Complete Study Plan for ${subject.toUpperCase()}</h3>`
+
+for(let i=0;i<days;i++){
+
+let topic=topicList[i % topicList.length]
+
+result+=`<p><b>Day ${i+1}</b>: ${topic}</p>`
+
+}
+
+result+=`<br><b>Recommended Full Course:</b><br>
+<a href="${youtubeLinks[subject]}" target="_blank">
+Watch YouTube Course
+</a>
+`
 
 document.getElementById("planResult").innerHTML=result
 
 }
-
 function generateWeeklyPlan(){
 
-const subject=document.getElementById("weekSubject").value
-const hours=parseInt(document.getElementById("studyHours").value)
-
-let result="<h3>Weekly Schedule for "+subject+"</h3>"
+let result=""
 
 for(let i=1;i<=7;i++){
 
-let pomodoro=Math.floor((hours*60)/25)
-
-result+=`
-<div>
-Day ${i} - ${subject}<br>
-Study Time: ${hours} hours<br>
-Pomodoro Sessions: ${pomodoro}
-</div>
-`
+result+=`<p>Day ${i}: Study + Practice + Revision</p>`
 
 }
 
@@ -115,38 +208,46 @@ document.getElementById("weeklyResult").innerHTML=result
 
 }
 
-let progress=0
+/* deadline reminder */
 
-function increaseProgress(){
+function setDeadline(){
 
-progress+=10
+let task=document.getElementById("deadlineTask").value
 
-document.getElementById("progressBar").value=progress
+let date=document.getElementById("deadlineDate").value
 
-}
+document.getElementById("deadlineMsg").innerText=
 
-let time=1500
-
-function startTimer(){
-
-setInterval(()=>{
-
-if(time>0) time--
-
-let minutes=Math.floor(time/60)
-let seconds=time%60
-
-document.getElementById("timer").innerText=
-minutes+":"+(seconds<10?"0":"")+seconds
-
-},1000)
+`Reminder set for ${task} on ${date}`
 
 }
 
-function showSection(id){
+/* analytics chart */
 
-document.querySelectorAll(".card").forEach(c=>c.style.display="none")
+const ctx=document.getElementById("studyChart")
 
-document.getElementById(id).style.display="block"
+if(ctx){
+
+new Chart(ctx,{
+
+type:"bar",
+
+data:{
+
+labels:["Mon","Tue","Wed","Thu","Fri"],
+
+datasets:[{
+
+label:"Study Hours",
+
+data:[2,4,3,5,4],
+
+backgroundColor:"#c7a98b"
+
+}]
+
+}
+
+})
 
 }

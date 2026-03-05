@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Study Dashboard</title>
+
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
@@ -16,23 +21,26 @@
 <img src="https://i.pravatar.cc/100">
 
 <h3>Megha</h3>
-<p>Computer Science Student</p>
+
+<p>CS Student</p>
 
 </div>
 
 <nav>
 
 <button onclick="showSection('tasks')">Tasks</button>
+
 <button onclick="showSection('planner')">Planner</button>
-<button onclick="showSection('calendar')">Calendar</button>
-<button onclick="showSection('pomodoro')">Pomodoro</button>
-<button onclick="showSection('generator')">Plan Generator</button>
-<button onclick="showSection('weeklyPlanner')">Weekly Scheduler</button>
-<button onclick="showSection('progress')">Progress</button>
+
+<button onclick="showSection('generator')">AI Plan</button>
+
+<button onclick="showSection('weekly')">Weekly Plan</button>
+
+<button onclick="showSection('analytics')">Analytics</button>
+
+<button onclick="showSection('deadline')">Deadline</button>
 
 </nav>
-
-<button class="logout" onclick="logout()">Logout</button>
 
 </div>
 
@@ -42,15 +50,9 @@
 
 <div id="tasks" class="card">
 
-<h2>Tasks</h2>
+<h2>Task Manager</h2>
 
-<input id="taskInput" placeholder="New task">
-
-<select id="category">
-<option>Study</option>
-<option>Work</option>
-<option>Personal</option>
-</select>
+<input id="taskInput">
 
 <button onclick="addTask()">Add</button>
 
@@ -58,74 +60,61 @@
 
 </div>
 
-<div id="planner" class="card">
-
-<h2>Study Planner</h2>
-
-<textarea placeholder="Write today's study plan"></textarea>
-
-</div>
-
-<div id="calendar" class="card">
-
-<h2>Calendar</h2>
-<input type="date">
-
-</div>
-
-<div id="pomodoro" class="card">
-
-<h2>Pomodoro Timer</h2>
-
-<p id="timer">25:00</p>
-
-<button onclick="startTimer()">Start</button>
-
-</div>
-
 <div id="generator" class="card">
 
-<h2>AI Study Plan Generator</h2>
+<h2>AI Study Plan</h2>
 
 <input id="subject" placeholder="Subject">
 
-<input id="days" type="number" placeholder="Number of days">
+<input id="days" type="number" placeholder="Days">
 
-<button onclick="generatePlan()">Generate Plan</button>
+<button onclick="generatePlan()">Generate</button>
 
 <div id="planResult"></div>
 
 </div>
 
-<div id="weeklyPlanner" class="card">
+<div id="weekly" class="card">
 
-<h2>AI Weekly Study Scheduler</h2>
+<h2>Weekly Scheduler</h2>
 
-<input id="weekSubject" placeholder="Subject">
+<input id="weekSubject">
 
-<input id="studyHours" type="number" placeholder="Study hours per day">
+<button onclick="generateWeeklyPlan()">
 
-<button onclick="generateWeeklyPlan()">Generate Weekly Schedule</button>
+Generate
+
+</button>
 
 <div id="weeklyResult"></div>
 
 </div>
 
-<div id="progress" class="card">
+<div id="deadline" class="card">
 
-<h2>Progress Tracker</h2>
+<h2>Deadline Reminder</h2>
 
-<progress id="progressBar" value="0" max="100"></progress>
+<input id="deadlineTask" placeholder="Task">
 
-<button onclick="increaseProgress()">Update Progress</button>
+<input id="deadlineDate" type="date">
+
+<button onclick="setDeadline()">Set Reminder</button>
+
+<p id="deadlineMsg"></p>
+
+</div>
+
+<div id="analytics" class="card">
+
+<h2>Study Analytics</h2>
+
+<canvas id="studyChart"></canvas>
 
 </div>
 
 </div>
 
 </div>
-
-<button class="floating-btn">+</button>
 
 <script src="script.js"></script>
 
