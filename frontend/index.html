@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Study Dashboard</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <div class="container">
-
-<!-- SIDEBAR -->
 
 <div class="sidebar">
 
@@ -21,7 +16,6 @@
 <img src="https://i.pravatar.cc/100">
 
 <h3>Megha</h3>
-
 <p>Computer Science Student</p>
 
 </div>
@@ -29,15 +23,11 @@
 <nav>
 
 <button onclick="showSection('tasks')">Tasks</button>
-
 <button onclick="showSection('planner')">Planner</button>
-
 <button onclick="showSection('calendar')">Calendar</button>
-
 <button onclick="showSection('pomodoro')">Pomodoro</button>
-
 <button onclick="showSection('generator')">Plan Generator</button>
-
+<button onclick="showSection('weeklyPlanner')">Weekly Scheduler</button>
 <button onclick="showSection('progress')">Progress</button>
 
 </nav>
@@ -46,13 +36,9 @@
 
 </div>
 
-<!-- MAIN DASHBOARD -->
-
 <div class="main">
 
 <h1 class="title">Study Dashboard</h1>
-
-<!-- TASKS -->
 
 <div id="tasks" class="card">
 
@@ -61,11 +47,9 @@
 <input id="taskInput" placeholder="New task">
 
 <select id="category">
-
 <option>Study</option>
 <option>Work</option>
 <option>Personal</option>
-
 </select>
 
 <button onclick="addTask()">Add</button>
@@ -74,27 +58,20 @@
 
 </div>
 
-<!-- STUDY PLANNER -->
-
 <div id="planner" class="card">
 
 <h2>Study Planner</h2>
 
-<textarea placeholder="Write your study plan"></textarea>
+<textarea placeholder="Write today's study plan"></textarea>
 
 </div>
-
-<!-- CALENDAR -->
 
 <div id="calendar" class="card">
 
 <h2>Calendar</h2>
-
 <input type="date">
 
 </div>
-
-<!-- POMODORO -->
 
 <div id="pomodoro" class="card">
 
@@ -106,21 +83,33 @@
 
 </div>
 
-<!-- PLAN GENERATOR -->
-
 <div id="generator" class="card">
 
-<h2>AI Study Plan</h2>
+<h2>AI Study Plan Generator</h2>
 
-<input id="goal" placeholder="Example: Learn React">
+<input id="subject" placeholder="Subject">
 
-<button onclick="generatePlan()">Generate</button>
+<input id="days" type="number" placeholder="Number of days">
 
-<p id="planResult"></p>
+<button onclick="generatePlan()">Generate Plan</button>
+
+<div id="planResult"></div>
 
 </div>
 
-<!-- PROGRESS -->
+<div id="weeklyPlanner" class="card">
+
+<h2>AI Weekly Study Scheduler</h2>
+
+<input id="weekSubject" placeholder="Subject">
+
+<input id="studyHours" type="number" placeholder="Study hours per day">
+
+<button onclick="generateWeeklyPlan()">Generate Weekly Schedule</button>
+
+<div id="weeklyResult"></div>
+
+</div>
 
 <div id="progress" class="card">
 

@@ -1,26 +1,46 @@
+function signup(){
+
+const email=document.getElementById("signupEmail").value
+const password=document.getElementById("signupPassword").value
+const confirm=document.getElementById("confirmPassword").value
+
+if(password!==confirm){
+alert("Passwords do not match")
+return
+}
+
+localStorage.setItem("userEmail",email)
+localStorage.setItem("userPassword",password)
+
+alert("Account created")
+
+window.location.href="login.html"
+
+}
+
 function login(){
 
 const email=document.getElementById("email").value
+const password=document.getElementById("password").value
 
-if(email){
+const savedEmail=localStorage.getItem("userEmail")
+const savedPassword=localStorage.getItem("userPassword")
 
-localStorage.setItem("user",email)
+if(email===savedEmail && password===savedPassword){
 
 window.location.href="index.html"
+
+}else{
+
+alert("Invalid credentials")
 
 }
 
 }
 
 function logout(){
-
-localStorage.removeItem("user")
-
 window.location.href="login.html"
-
 }
-
-/* TASKS */
 
 let tasks=[]
 
@@ -53,22 +73,47 @@ list.appendChild(li)
 
 }
 
-/* PLAN GENERATOR */
-
 function generatePlan(){
 
-const goal=document.getElementById("goal").value
+const subject=document.getElementById("subject").value
+const days=parseInt(document.getElementById("days").value)
 
-document.getElementById("planResult").innerText=
+let result="<h3>Study Plan for "+subject+"</h3>"
 
-"Plan for: "+goal+
-"\nDay 1: Basics"+
-"\nDay 2: Practice"+
-"\nDay 3: Build Project"
+for(let i=1;i<=days;i++){
+
+result+=`<p>Day ${i}: Study ${subject}</p>`
 
 }
 
-/* PROGRESS */
+document.getElementById("planResult").innerHTML=result
+
+}
+
+function generateWeeklyPlan(){
+
+const subject=document.getElementById("weekSubject").value
+const hours=parseInt(document.getElementById("studyHours").value)
+
+let result="<h3>Weekly Schedule for "+subject+"</h3>"
+
+for(let i=1;i<=7;i++){
+
+let pomodoro=Math.floor((hours*60)/25)
+
+result+=`
+<div>
+Day ${i} - ${subject}<br>
+Study Time: ${hours} hours<br>
+Pomodoro Sessions: ${pomodoro}
+</div>
+`
+
+}
+
+document.getElementById("weeklyResult").innerHTML=result
+
+}
 
 let progress=0
 
@@ -80,77 +125,28 @@ document.getElementById("progressBar").value=progress
 
 }
 
-/* POMODORO */
-
 let time=1500
 
 function startTimer(){
 
 setInterval(()=>{
 
-if(time>0){
-
-time--
-
-}
+if(time>0) time--
 
 let minutes=Math.floor(time/60)
-
 let seconds=time%60
 
 document.getElementById("timer").innerText=
-
 minutes+":"+(seconds<10?"0":"")+seconds
 
 },1000)
 
 }
 
-/* SIDEBAR NAVIGATION */
-
 function showSection(id){
 
 document.querySelectorAll(".card").forEach(c=>c.style.display="none")
 
 document.getElementById(id).style.display="block"
-
-}
-function signup(){
-
-const email=document.getElementById("signupEmail").value
-const password=document.getElementById("signupPassword").value
-const confirm=document.getElementById("confirmPassword").value
-
-if(password!==confirm){
-alert("Passwords do not match")
-return
-}
-
-localStorage.setItem("userEmail",email)
-localStorage.setItem("userPassword",password)
-
-alert("Account created successfully")
-
-window.location.href="login.html"
-
-}
-
-function login(){
-
-const email=document.getElementById("email").value
-const password=document.getElementById("password").value
-
-const savedEmail=localStorage.getItem("userEmail")
-const savedPassword=localStorage.getItem("userPassword")
-
-if(email===savedEmail && password===savedPassword){
-
-window.location.href="index.html"
-
-}else{
-
-alert("Invalid login credentials")
-
-}
 
 }
