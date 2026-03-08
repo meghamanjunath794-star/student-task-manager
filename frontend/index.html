@@ -12,8 +12,6 @@
 
 <div class="layout">
 
-<!-- Sidebar -->
-
 <div class="sidebar">
 
 <div class="avatar">M</div>
@@ -23,158 +21,96 @@
 <p>CS Student</p>
 
 <button onclick="show('tasks')">Tasks</button>
-
-<button onclick="show('generator')">AI Plan</button>
-
-<button onclick="show('weekly')">Weekly Planner</button>
-
+<button onclick="show('plan')">AI Plan</button>
+<button onclick="show('weekly')">Weekly</button>
 <button onclick="show('deadline')">Deadline</button>
-
-<button onclick="show('chat')">AI Assistant</button>
-
+<button onclick="show('assistant')">AI Assistant</button>
 <button onclick="show('streak')">Study Streak</button>
 
 </div>
 
-<!-- Main -->
 
 <div class="main">
 
 <h1 class="page-title">Study Dashboard</h1>
 
 
-<!-- TASK BOARD -->
+<div id="tasks" class="card">
 
-<div id="tasks" class="section">
+<h2>Task Board</h2>
 
-<h2 class="section-title">Task Board</h2>
+<input id="taskInput" placeholder="Add task">
 
-<input id="taskInput" placeholder="Enter task">
-
-<button onclick="addTask()" class="primary-btn">
-
-Add Task
-
-</button>
+<button onclick="addTask()">Add Task</button>
 
 <ul id="taskList"></ul>
 
 </div>
 
 
-<!-- AI PLAN -->
+<div id="plan" class="card">
 
-<div id="generator" class="section">
-
-<h2 class="section-title">
-
-AI Study Plan Generator
-
-</h2>
+<h2>AI Study Plan</h2>
 
 <input id="subject" placeholder="Subject">
 
-<input id="days" type="number" placeholder="Days">
+<input id="days" placeholder="Days">
 
-<button onclick="generatePlan()" class="primary-btn">
-
-Generate Plan
-
-</button>
+<button onclick="generatePlan()">Generate</button>
 
 <div id="planResult"></div>
 
 </div>
 
 
-<!-- WEEKLY -->
+<div id="weekly" class="card">
 
-<div id="weekly" class="section">
+<h2>Weekly Planner</h2>
 
-<h2 class="section-title">
+<input id="weeklySubject">
 
-Weekly Study Planner
-
-</h2>
-
-<input id="weeklySubject" placeholder="Subject">
-
-<button onclick="generateWeek()" class="primary-btn">
-
-Generate Weekly Plan
-
-</button>
+<button onclick="generateWeek()">Generate</button>
 
 <div id="weekResult"></div>
 
 </div>
 
 
-<!-- DEADLINE -->
+<div id="deadline" class="card">
 
-<div id="deadline" class="section">
-
-<h2 class="section-title">
-
-Deadline Reminder
-
-</h2>
+<h2>Deadline Reminder</h2>
 
 <input id="deadlineTask">
 
 <input id="deadlineDate" type="date">
 
-<button onclick="setDeadline()" class="primary-btn">
-
-Set Reminder
-
-</button>
+<button onclick="setDeadline()">Set Reminder</button>
 
 <p id="deadlineMsg"></p>
 
 </div>
 
 
-<!-- AI ASSISTANT -->
+<div id="assistant" class="card">
 
-<div id="chat" class="section">
+<h2>AI Study Assistant</h2>
 
-<h2 class="section-title">
+<input id="chatInput" placeholder="Ask study question">
 
-AI Study Assistant
-
-</h2>
-
-<input id="chatInput" placeholder="Ask anything">
-
-<button onclick="askAI()" class="primary-btn">
-
-Ask AI
-
-</button>
+<button onclick="askAI()">Ask</button>
 
 <div id="chatResult"></div>
 
 </div>
 
 
-<!-- STREAK -->
+<div id="streak" class="card">
 
-<div id="streak" class="section">
-
-<h2 class="section-title">
-
-Study Streak
-
-</h2>
+<h2>Study Streak</h2>
 
 <p id="streakCount">0</p>
 
-<button onclick="updateStreak()" class="primary-btn">
-
-Mark Study Done
-
-</button>
+<button onclick="updateStreak()">Mark Study Done</button>
 
 </div>
 
