@@ -245,3 +245,26 @@ padding:8px;
 border-radius:6px;
 
 }
+#chatBox{
+
+height:200px;
+
+overflow-y:auto;
+
+background:#1e1e1e;
+
+padding:10px;
+
+border-radius:8px;
+
+margin-bottom:10px;
+
+}
+
+.light-mode{
+
+background:#f4f4f4;
+
+color:#111;
+
+}
