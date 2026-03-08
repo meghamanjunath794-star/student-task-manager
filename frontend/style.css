@@ -1,309 +1,148 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@700&display=swap');
-
-
-/* ================= DASHBOARD ONLY ================= */
-
-.dashboard{
-
-background: radial-gradient(circle at top left,#1a1a1a,#0f0f0f);
-
-color:white;
-
-font-family:Poppins;
-
+body{
 margin:0;
-
-}
-
-
-/* LAYOUT */
-
-.dashboard .layout{
-
-display:flex;
-
-}
-
-
-/* SIDEBAR */
-
-.dashboard .sidebar{
-
-width:220px;
-
-background:rgba(30,30,30,0.85);
-
-backdrop-filter:blur(12px);
-
-height:100vh;
-
-padding:20px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
-
-border-right:1px solid rgba(255,255,255,0.05);
-
-}
-
-
-/* AVATAR */
-
-.dashboard .avatar{
-
-width:60px;
-
-height:60px;
-
-background:#c7a98b;
-
-border-radius:50%;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:24px;
-
-font-weight:bold;
-
-margin-bottom:10px;
-
-}
-
-
-/* SIDEBAR BUTTONS */
-
-.dashboard .sidebar button{
-
-padding:10px;
-
-background:#c7a98b;
-
-border:none;
-
-border-radius:10px;
-
-cursor:pointer;
-
-transition:all 0.25s ease;
-
-font-weight:500;
-
-}
-
-.dashboard .sidebar button:hover{
-
-transform:translateX(4px);
-
-background:#d6b899;
-
-}
-
-
-/* MAIN CONTENT */
-
-.dashboard .main{
-
-flex:1;
-
-padding:40px;
-
-width:100%;
-
-}
-
-
-/* TITLE */
-
-.dashboard .page-title{
-
-font-size:44px;
-
-font-family:"Playfair Display";
-
-margin-bottom:20px;
-
-}
-
-
-/* CARDS */
-
-.dashboard .card{
-
-background:rgba(30,30,30,0.75);
-
-backdrop-filter:blur(10px);
-
-padding:25px;
-
-margin-top:25px;
-
-border-radius:14px;
-
-width:100%;
-
-max-width:100%;
-
-box-sizing:border-box;
-
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
-
-transition:transform 0.25s ease;
-
-}
-
-.dashboard .card:hover{
-
-transform:translateY(-4px);
-
-}
-
-
-/* CARD HEADINGS */
-
-.dashboard .card h2{
-
-font-size:22px;
-
-margin-bottom:10px;
-
-}
-
-
-/* INPUTS */
-
-.dashboard .card input{
-
-width:100%;
-
-padding:12px;
-
-margin-top:10px;
-
-background:#222;
-
-border:1px solid rgba(255,255,255,0.05);
-
-border-radius:8px;
-
+font-family:Arial;
 color:white;
-
-font-size:15px;
-
-transition:all 0.2s ease;
-
 }
 
-.dashboard .card input:focus{
+/* landing */
 
-outline:none;
-
-border:1px solid #c7a98b;
-
+.landing{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
+background-size:cover;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
+.landing-overlay{
+background:rgba(0,0,0,0.6);
+padding:60px;
+text-align:center;
+}
 
-/* BUTTONS */
+.landing-title{
+font-size:56px;
+}
 
-.dashboard .card button{
-
-margin-top:12px;
-
-padding:10px 18px;
-
+.landing-buttons button{
+padding:12px 20px;
+margin:10px;
 background:#c7a98b;
-
 border:none;
-
 border-radius:8px;
-
 cursor:pointer;
-
-font-weight:500;
-
-transition:all 0.2s ease;
-
 }
 
-.dashboard .card button:hover{
+/* login signup */
 
-background:#d6b899;
-
-transform:scale(1.03);
-
+.auth{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("https://images.unsplash.com/photo-1519389950473-47ba0277781c");
+background-size:cover;
 }
 
-
-/* TASK LIST */
-
-.dashboard ul{
-
-list-style:none;
-
-padding:0;
-
-margin-top:15px;
-
+.auth-box{
+background:rgba(0,0,0,0.7);
+padding:40px;
+border-radius:12px;
+width:350px;
 }
 
-.dashboard li{
-
-background:#222;
-
-padding:10px;
-
-margin-top:8px;
-
-border-radius:8px;
-
+.auth-box input{
 width:100%;
-
-transition:all 0.2s ease;
-
-}
-
-.dashboard li:hover{
-
-background:#2a2a2a;
-
-}
-
-
-/* CHAT BOX */
-
-.dashboard #chatBox{
-
-height:200px;
-
-overflow-y:auto;
-
-background:#1e1e1e;
-
-padding:10px;
-
+padding:12px;
+margin:10px 0;
+background:#222;
+border:none;
+color:white;
 border-radius:8px;
-
-margin-bottom:10px;
-
 }
 
+/* dashboard */
 
-/* CHART */
+.layout{
+display:flex;
+}
 
-.dashboard canvas{
+.sidebar{
+width:220px;
+background:#1a1a1a;
+height:100vh;
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
 
-margin-top:15px;
-
-background:#111;
-
-border-radius:10px;
-
+.sidebar button{
 padding:10px;
+background:#c7a98b;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
 
+.avatar{
+width:60px;
+height:60px;
+background:#c7a98b;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+font-weight:bold;
+}
+
+.main{
+flex:1;
+padding:40px;
+}
+
+.page-title{
+font-size:44px;
+}
+
+.card{
+background:#1a1a1a;
+padding:25px;
+margin-top:25px;
+border-radius:12px;
+width:100%;
+max-width:900px;
+}
+
+.card input{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#222;
+border:none;
+border-radius:8px;
+color:white;
+}
+
+.card button{
+margin-top:10px;
+padding:10px;
+background:#c7a98b;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+ul{
+list-style:none;
+padding:0;
+}
+
+li{
+background:#222;
+padding:8px;
+margin-top:5px;
+border-radius:6px;
 }
