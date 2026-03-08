@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
-<title>Study Dashboard</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Task Manager</title>
 
 <link rel="stylesheet" href="style.css">
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 
 <body>
 
 <div class="layout">
+
+
+<!-- SIDEBAR -->
 
 <div class="sidebar">
 
@@ -20,31 +31,44 @@
 
 <p>CS Student</p>
 
+<button onclick="toggleTheme()">Toggle Theme</button>
+
 <button onclick="showSection('tasks')">Tasks</button>
 
-<button onclick="showSection('plan')">AI Plan</button>
+<button onclick="showSection('studyplan')">AI Plan</button>
 
-<button onclick="showSection('weekly')">Weekly</button>
+<button onclick="showSection('weekly')">Weekly Plan</button>
 
 <button onclick="showSection('deadline')">Deadline</button>
 
 <button onclick="showSection('assistant')">AI Assistant</button>
 
-<button onclick="showSection('streak')">Study Streak</button>
+<button onclick="showSection('doubt')">Doubt Solver</button>
+
+<button onclick="showSection('roadmap')">Roadmap</button>
+
+<button onclick="showSection('progress')">Progress</button>
 
 </div>
 
 
+
+<!-- MAIN CONTENT -->
+
 <div class="main">
+
 
 <h1 class="page-title">Study Dashboard</h1>
 
+
+
+<!-- TASK BOARD -->
 
 <div id="tasks" class="card">
 
 <h2>Task Board</h2>
 
-<input id="taskInput" placeholder="Add task">
+<input id="taskInput" placeholder="Enter task">
 
 <button onclick="addTask()">Add Task</button>
 
@@ -53,7 +77,10 @@
 </div>
 
 
-<div id="plan" class="card">
+
+<!-- AI STUDY PLAN -->
+
+<div id="studyplan" class="card">
 
 <h2>AI Study Plan</h2>
 
@@ -68,11 +95,14 @@
 </div>
 
 
+
+<!-- WEEKLY PLANNER -->
+
 <div id="weekly" class="card">
 
-<h2>Weekly Planner</h2>
+<h2>Weekly Study Planner</h2>
 
-<input id="weeklySubject">
+<input id="weeklySubject" placeholder="Subject">
 
 <button onclick="generateWeek()">Generate</button>
 
@@ -81,11 +111,14 @@
 </div>
 
 
+
+<!-- DEADLINE -->
+
 <div id="deadline" class="card">
 
 <h2>Deadline Reminder</h2>
 
-<input id="deadlineTask">
+<input id="deadlineTask" placeholder="Task">
 
 <input id="deadlineDate" type="date">
 
@@ -95,6 +128,9 @@
 
 </div>
 
+
+
+<!-- AI STUDY ASSISTANT -->
 
 <div id="assistant" class="card">
 
@@ -109,19 +145,60 @@
 </div>
 
 
-<div id="streak" class="card">
 
-<h2>Study Streak</h2>
+<!-- AI DOUBT SOLVER -->
 
-<p id="streakCount">0</p>
+<div id="doubt" class="card">
 
-<button onclick="updateStreak()">Mark Study Done</button>
+<h2>AI Doubt Solver</h2>
+
+<div id="chatBox"></div>
+
+<input id="doubtInput" placeholder="Ask your doubt">
+
+<button onclick="solveDoubt()">Send</button>
 
 </div>
 
-</div>
+
+
+<!-- ROADMAP GENERATOR -->
+
+<div id="roadmap" class="card">
+
+<h2>AI Roadmap Generator</h2>
+
+<input id="roadmapSubject" placeholder="Subject">
+
+<input id="goal" placeholder="Goal">
+
+<input id="roadmapDays" placeholder="Days">
+
+<button onclick="generateRoadmap()">Generate</button>
+
+<div id="roadmapResult"></div>
 
 </div>
+
+
+
+<!-- STUDY PROGRESS -->
+
+<div id="progress" class="card">
+
+<h2>Study Progress</h2>
+
+<canvas id="progressChart"></canvas>
+
+<button onclick="updateProgress()">Add Study Session</button>
+
+</div>
+
+
+
+</div>
+</div>
+
 
 <script src="script.js"></script>
 
