@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@700&display=swap');
 
 
-/* BODY */
+/* ================= DASHBOARD ONLY ================= */
 
-body{
-
-margin:0;
-
-font-family:Poppins;
+.dashboard{
 
 background: radial-gradient(circle at top left,#1a1a1a,#0f0f0f);
 
 color:white;
+
+font-family:Poppins;
+
+margin:0;
 
 }
 
 
 /* LAYOUT */
 
-.layout{
+.dashboard .layout{
 
 display:flex;
 
@@ -27,7 +27,7 @@ display:flex;
 
 /* SIDEBAR */
 
-.sidebar{
+.dashboard .sidebar{
 
 width:220px;
 
@@ -52,7 +52,7 @@ border-right:1px solid rgba(255,255,255,0.05);
 
 /* AVATAR */
 
-.avatar{
+.dashboard .avatar{
 
 width:60px;
 
@@ -79,7 +79,7 @@ margin-bottom:10px;
 
 /* SIDEBAR BUTTONS */
 
-.sidebar button{
+.dashboard .sidebar button{
 
 padding:10px;
 
@@ -97,7 +97,7 @@ font-weight:500;
 
 }
 
-.sidebar button:hover{
+.dashboard .sidebar button:hover{
 
 transform:translateX(4px);
 
@@ -108,7 +108,7 @@ background:#d6b899;
 
 /* MAIN CONTENT */
 
-.main{
+.dashboard .main{
 
 flex:1;
 
@@ -119,9 +119,9 @@ width:100%;
 }
 
 
-/* DASHBOARD TITLE */
+/* TITLE */
 
-.page-title{
+.dashboard .page-title{
 
 font-size:44px;
 
@@ -134,7 +134,7 @@ margin-bottom:20px;
 
 /* CARDS */
 
-.card{
+.dashboard .card{
 
 background:rgba(30,30,30,0.75);
 
@@ -158,7 +158,7 @@ transition:transform 0.25s ease;
 
 }
 
-.card:hover{
+.dashboard .card:hover{
 
 transform:translateY(-4px);
 
@@ -167,7 +167,7 @@ transform:translateY(-4px);
 
 /* CARD HEADINGS */
 
-.card h2{
+.dashboard .card h2{
 
 font-size:22px;
 
@@ -178,7 +178,7 @@ margin-bottom:10px;
 
 /* INPUTS */
 
-.card input{
+.dashboard .card input{
 
 width:100%;
 
@@ -200,7 +200,7 @@ transition:all 0.2s ease;
 
 }
 
-.card input:focus{
+.dashboard .card input:focus{
 
 outline:none;
 
@@ -211,7 +211,7 @@ border:1px solid #c7a98b;
 
 /* BUTTONS */
 
-.card button{
+.dashboard .card button{
 
 margin-top:12px;
 
@@ -231,7 +231,7 @@ transition:all 0.2s ease;
 
 }
 
-.card button:hover{
+.dashboard .card button:hover{
 
 background:#d6b899;
 
@@ -242,7 +242,7 @@ transform:scale(1.03);
 
 /* TASK LIST */
 
-ul{
+.dashboard ul{
 
 list-style:none;
 
@@ -252,7 +252,7 @@ margin-top:15px;
 
 }
 
-li{
+.dashboard li{
 
 background:#222;
 
@@ -268,7 +268,7 @@ transition:all 0.2s ease;
 
 }
 
-li:hover{
+.dashboard li:hover{
 
 background:#2a2a2a;
 
@@ -277,7 +277,7 @@ background:#2a2a2a;
 
 /* CHAT BOX */
 
-#chatBox{
+.dashboard #chatBox{
 
 height:200px;
 
@@ -296,7 +296,7 @@ margin-bottom:10px;
 
 /* CHART */
 
-canvas{
+.dashboard canvas{
 
 margin-top:15px;
 
@@ -305,16 +305,5 @@ background:#111;
 border-radius:10px;
 
 padding:10px;
-
-}
-
-
-/* LIGHT MODE */
-
-.light-mode{
-
-background:#f4f4f4;
-
-color:#111;
 
 }
