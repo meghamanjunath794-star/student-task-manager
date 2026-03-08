@@ -3,159 +3,181 @@
 body{
 margin:0;
 font-family:Poppins;
-background:#111;
+background:#0f0f0f;
 color:#f5f1ea;
 }
 
 /* Landing */
 
 .landing{
+
 height:100vh;
+
 background:url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
+
 background-size:cover;
-background-position:center;
+
 display:flex;
 justify-content:center;
 align-items:center;
+
 }
 
 .landing-overlay{
+
 background:rgba(0,0,0,0.7);
+
 padding:60px;
+
 text-align:center;
+
 }
 
 .landing-title{
+
 font-size:56px;
-font-weight:700;
+
 font-family:"Playfair Display";
+
+font-weight:700;
+
 }
-
-.landing-sub{
-font-size:22px;
-}
-
-/* Login */
-
-.auth{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:url("https://images.unsplash.com/photo-1519389950473-47ba0277781c");
-background-size:cover;
-background-position:center;
-}
-
-.auth-card{
-background:rgba(0,0,0,0.8);
-padding:40px;
-border-radius:12px;
-width:350px;
-}
-
-/* Titles */
 
 .page-title{
+
 font-size:44px;
-font-weight:700;
+
 font-family:"Playfair Display";
+
+font-weight:700;
+
 }
+
 
 /* Layout */
 
 .layout{
+
 display:flex;
+
 }
 
 .sidebar{
+
 width:220px;
-background:#1c1c1c;
+
+background:#181818;
+
 height:100vh;
+
 padding:20px;
+
 display:flex;
+
 flex-direction:column;
-gap:10px;
+
+gap:12px;
+
 }
 
 .sidebar button{
+
 background:#c7a98b;
+
 border:none;
+
 padding:10px;
+
 border-radius:8px;
+
 cursor:pointer;
+
 }
 
 .avatar{
+
 width:70px;
+
 height:70px;
+
 background:#c7a98b;
-display:flex;
-align-items:center;
-justify-content:center;
+
 border-radius:50%;
-font-size:30px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:28px;
+
 font-weight:bold;
+
 }
 
 .main{
-flex:1;
-padding:40px;
-}
 
-/* Sections */
+flex:1;
+
+padding:40px;
+
+}
 
 .section{
-margin-top:30px;
-}
 
-.section-title{
-font-size:30px;
-margin-bottom:20px;
+margin-top:30px;
+
 }
 
 input{
+
 width:100%;
-padding:14px;
+
+padding:12px;
+
 background:#1f1f1f;
+
 border:none;
-border-radius:10px;
+
+border-radius:8px;
+
 color:white;
-margin-bottom:12px;
+
+margin-bottom:10px;
+
 }
 
 .primary-btn{
-padding:12px;
+
+padding:10px;
+
 background:#c7a98b;
+
 border:none;
-border-radius:10px;
+
+border-radius:8px;
+
 cursor:pointer;
+
 }
 
-.task-list{
+ul{
+
 list-style:none;
+
 padding:0;
+
 }
 
-.task-list li{
-padding:12px;
+li{
+
 background:#1f1f1f;
-margin-bottom:10px;
-border-radius:10px;
-}
 
-/* Calendar */
+padding:10px;
 
-#calendarGrid{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:10px;
-margin-top:20px;
-}
+margin-top:8px;
 
-.day{
-background:#1f1f1f;
-padding:20px;
-text-align:center;
-border-radius:6px;
+border-radius:8px;
+
 }

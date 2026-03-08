@@ -1,23 +1,10 @@
 function show(id){
 
 document.querySelectorAll(".section")
+
 .forEach(s=>s.style.display="none")
 
 document.getElementById(id).style.display="block"
-
-}
-
-/* signup */
-
-function signup(){
-
-let email=document.getElementById("signupEmail").value
-let pass=document.getElementById("signupPassword").value
-
-localStorage.setItem("email",email)
-localStorage.setItem("pass",pass)
-
-location.href="login.html"
 
 }
 
@@ -26,6 +13,7 @@ location.href="login.html"
 function login(){
 
 let email=document.getElementById("email").value
+
 let pass=document.getElementById("password").value
 
 if(email===localStorage.getItem("email")
@@ -41,6 +29,22 @@ alert("Invalid login")
 
 }
 
+/* signup */
+
+function signup(){
+
+let email=document.getElementById("signupEmail").value
+
+let pass=document.getElementById("signupPassword").value
+
+localStorage.setItem("email",email)
+
+localStorage.setItem("pass",pass)
+
+location.href="login.html"
+
+}
+
 /* tasks */
 
 function addTask(){
@@ -48,45 +52,28 @@ function addTask(){
 let text=document.getElementById("taskInput").value
 
 let li=document.createElement("li")
+
 li.innerText=text
 
 document.getElementById("taskList").appendChild(li)
 
 }
 
-/* study plan */
+/* AI PLAN */
 
 function generatePlan(){
 
 const subject=document.getElementById("subject").value
+
 const days=parseInt(document.getElementById("days").value)
-
-const topics=[
-
-"Introduction",
-"Basics",
-"Theory",
-"Practice",
-"Mini Project",
-"Advanced Concepts",
-"Final Project"
-
-]
 
 let html=""
 
-for(let i=0;i<days;i++){
+for(let i=1;i<=days;i++){
 
-html+=`<p><b>Day ${i+1}</b>: ${topics[i%topics.length]} of ${subject}</p>`
+html+=`<p>Day ${i}: Study ${subject}</p>`
 
 }
-
-html+=`<br>
-<a target="_blank"
-href="https://youtube.com/results?search_query=${subject}+full+course">
-Recommended YouTube Course
-</a>
-`
 
 document.getElementById("planResult").innerHTML=html
 
@@ -100,13 +87,19 @@ let subject=document.getElementById("weeklySubject").value
 
 let plan=[
 
-"Study basics and practice",
-"Revise basics and introduction",
-"Core theory and exercises",
-"Revision and problem solving",
-"Intermediate concepts",
-"Mini project",
-"Final revision"
+"Basics",
+
+"Introduction",
+
+"Theory",
+
+"Practice",
+
+"Revision",
+
+"Mini Project",
+
+"Final Revision"
 
 ]
 
@@ -114,29 +107,11 @@ let html=""
 
 plan.forEach((p,i)=>{
 
-html+=`<p><b>Day ${i+1}</b>: ${p} (${subject})</p>`
+html+=`<p>Day ${i+1}: ${p} of ${subject}</p>`
 
 })
 
 document.getElementById("weekResult").innerHTML=html
-
-}
-
-/* calendar */
-
-const calendar=document.getElementById("calendarGrid")
-
-if(calendar){
-
-for(let i=1;i<=30;i++){
-
-let d=document.createElement("div")
-d.className="day"
-d.innerText=i
-
-calendar.appendChild(d)
-
-}
 
 }
 
@@ -145,9 +120,11 @@ calendar.appendChild(d)
 function setDeadline(){
 
 let task=document.getElementById("deadlineTask").value
+
 let date=document.getElementById("deadlineDate").value
 
 document.getElementById("deadlineMsg").innerText=
+
 `Reminder set for ${task} on ${date}`
 
 }
@@ -186,8 +163,11 @@ body:JSON.stringify({
 model:"gpt-4o-mini",
 
 messages:[
+
 {role:"system",content:"You are a helpful study assistant."},
+
 {role:"user",content:question}
+
 ]
 
 })
@@ -197,6 +177,7 @@ messages:[
 const data=await response.json()
 
 document.getElementById("chatResult").innerText=
+
 data.choices[0].message.content
 
 }
